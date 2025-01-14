@@ -12,10 +12,10 @@ def add_to_calculation(symbol):
 def evaluate_calculation():
     global calculation
     try:
-        calculation = str(eval(calculation))
+        result = str(eval(calculation))
         calculation = ""
         text_result.delete("1.0", "end")
-        text_result.insert("1.0", calculation)
+        text_result.insert("1.0", result)
     except:
         clear_field()
         text_result.insert("1.0", "Error")
@@ -64,6 +64,11 @@ btn_open = tk.Button(root,text="(",command=lambda: add_to_calculation("("),width
 btn_open.grid(row=5, column=1)
 btn_closed = tk.Button(root,text=")",command=lambda: add_to_calculation(")"),width=5, font=("Arial", 24))
 btn_closed.grid(row=5, column=3)
+btn_clear = tk.Button(root,text="C",command=clear_field, width=11, font=("Arial", 24))
+btn_clear.grid(row=6, column=1, columnspan=2)
+btn_equals = tk.Button(root,text="=",command=evaluate_calculation, width=11, font=("Arial", 24))
+btn_equals.grid(row=6, column=3, columnspan=2)
+
 root.mainloop()
 
 
